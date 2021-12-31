@@ -28,6 +28,7 @@ public class LeaderboardController {
     public ResponseEntity<?> findAll() {
         List<LeaderboardDto> leaderboards = leaderboardService.findAll()
                 .stream()
+                .limit(12)
                 .map(leaderboardFactory::toDto)
                 .collect(Collectors.toList());
 

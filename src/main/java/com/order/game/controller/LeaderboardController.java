@@ -5,6 +5,7 @@ import com.order.game.domain.entity.Leaderboard;
 import com.order.game.factory.LeaderboardFactory;
 import com.order.game.service.LeaderboardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1")
+@Log4j2
 public class LeaderboardController {
 
     private final static String FIND_ALL = "/leaderboards";
@@ -37,6 +39,7 @@ public class LeaderboardController {
 
     @PostMapping(SAVE)
     public ResponseEntity<?> save(@RequestBody LeaderboardDto leaderboardDto) {
+        log.info(leaderboardDto);
         Leaderboard savedLeaderboard = leaderboardService.save(leaderboardFactory.toEntity(leaderboardDto));
         return new ResponseEntity<>(leaderboardFactory.toDto(savedLeaderboard), HttpStatus.OK);
     }

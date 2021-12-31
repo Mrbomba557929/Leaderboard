@@ -22,7 +22,7 @@ public class Leaderboard {
     private String name;
 
     @Column(name = "time")
-    private Long time;
+    private double time;
 
     @Column(name = "email")
     private String email;

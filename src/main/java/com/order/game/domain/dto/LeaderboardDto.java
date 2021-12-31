@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LeaderboardDto {
     private String name;
-    private Long time;
+    private double time;
     private String email;
     private String discord;
 }

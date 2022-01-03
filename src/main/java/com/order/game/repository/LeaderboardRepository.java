@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface LeaderboardRepository extends PagingAndSortingRepository<Leaderboard, Long> {
 
-    @Query("SELECT l FROM Leaderboard l WHERE l.email = ?1 OR l.discord = ?2")
+    @Query(value = "SELECT * FROM leaderboards WHERE leaderboards.email = ?1 OR leaderboards.discord = ?2", nativeQuery = true)
     List<Leaderboard> findByEmailOrDiscord(String email, String discord);
 
     @Query(value = "SELECT * FROM leaderboards ORDER BY leaderboards.time LIMIT 12", nativeQuery = true)

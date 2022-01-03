@@ -20,19 +20,20 @@ import java.util.stream.Collectors;
 @Log4j2
 public class LeaderboardController {
 
-    private final static String FIND_ALL = "/leaderboards";
+    private final static String FIND_FIRST_TWELVE = "/leaderboards";
     private final static String SAVE = "/leaderboards";
 
     private final LeaderboardService leaderboardService;
     private final LeaderboardFactory leaderboardFactory;
 
-    @GetMapping(FIND_ALL)
-    public ResponseEntity<?> findAll() {
+    @GetMapping(FIND_FIRST_TWELVE)
+    public ResponseEntity<?> findFirstTwelve() {
         List<LeaderboardDto> leaderboards = leaderboardService.findAll()
                 .stream()
-                .limit(12)
                 .map(leaderboardFactory::toDto)
                 .collect(Collectors.toList());
+
+        log.info(leaderboards);
 
         return new ResponseEntity<>(leaderboards, HttpStatus.OK);
     }

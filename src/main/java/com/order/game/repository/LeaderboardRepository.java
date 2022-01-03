@@ -13,6 +13,6 @@ public interface LeaderboardRepository extends PagingAndSortingRepository<Leader
     @Query("SELECT l FROM Leaderboard l WHERE l.email = ?1 OR l.discord = ?2")
     List<Leaderboard> findByEmailOrDiscord(String email, String discord);
 
-    @Query("SELECT l FROM Leaderboard l ORDER BY l.time ASC")
-    List<Leaderboard> findAllOrderByTime();
+    @Query(value = "SELECT * FROM leaderboards ORDER BY leaderboards.time LIMIT 12", nativeQuery = true)
+    List<Leaderboard> findFirstTwelveOrderByTime();
 }

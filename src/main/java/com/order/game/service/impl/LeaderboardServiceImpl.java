@@ -38,6 +38,6 @@ public class LeaderboardServiceImpl implements LeaderboardService {
 
     @Override
     public List<Leaderboard> findAll() {
-        return leaderboardRepository.findAllOrderByTime();
+        return leaderboardRepository.findFirstTwelveOrderByTime();
     }
 }

@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class SendEmailNotificationJob {
 
-    private final static long TIME_OF_TASK = 900000L;
-    private final static long TIME_OF_DELAY = 900000L;
-    private final static long TARGET_COUNT_RECORDS = 500L;
+    private final static long TIME_OF_TASK = 120000L;
+    private final static long TIME_OF_DELAY = 120000L;
+    private final static long TARGET_COUNT_RECORDS = 5L;
 
     private final MailSender mailSender;
     private final LeaderboardFactory leaderboardFactory;

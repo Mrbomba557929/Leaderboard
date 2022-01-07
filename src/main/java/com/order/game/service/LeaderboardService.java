@@ -18,9 +18,9 @@ public interface LeaderboardService {
     Leaderboard save(Leaderboard leaderBoard);
 
     /**
-     * Method for find all the {@link Leaderboard} entities.
+     * Method for find first twelve the {@link Leaderboard} entities.
      *
      * @return list of the {@link Leaderboard} entities.
      */
-    List<Leaderboard> findAll();
+    List<Leaderboard> findFirstTwelve();
 }

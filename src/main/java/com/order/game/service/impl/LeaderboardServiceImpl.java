@@ -37,7 +37,7 @@ public class LeaderboardServiceImpl implements LeaderboardService {
     }
 
     @Override
-    public List<Leaderboard> findAll() {
+    public List<Leaderboard> findFirstTwelve() {
         return leaderboardRepository.findFirstTwelveOrderByTime();
     }
 }

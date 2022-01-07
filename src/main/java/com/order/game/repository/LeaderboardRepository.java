@@ -15,4 +15,10 @@ public interface LeaderboardRepository extends PagingAndSortingRepository<Leader
 
     @Query(value = "SELECT * FROM leaderboards ORDER BY leaderboards.time LIMIT 12", nativeQuery = true)
     List<Leaderboard> findFirstTwelveOrderByTime();
+
+    @Query(value = "SELECT COUNT(*) FROM leaderboards", nativeQuery = true)
+    long getCountRecords();
+
+    @Query(value = "SELECT * FROM leaderboards ORDER BY leaderboards.time", nativeQuery = true)
+    List<Leaderboard> findAllOrderByTime();
 }

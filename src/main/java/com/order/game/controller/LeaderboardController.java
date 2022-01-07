@@ -28,7 +28,7 @@ public class LeaderboardController {
 
     @GetMapping(FIND_FIRST_TWELVE)
     public ResponseEntity<?> findFirstTwelve() {
-        List<LeaderboardDto> leaderboards = leaderboardService.findAll()
+        List<LeaderboardDto> leaderboards = leaderboardService.findFirstTwelve()
                 .stream()
                 .map(leaderboardFactory::toDto)
                 .collect(Collectors.toList());
@@ -40,8 +40,10 @@ public class LeaderboardController {
 
     @PostMapping(SAVE)
     public ResponseEntity<?> save(@RequestBody LeaderboardDto leaderboardDto) {
+
         log.info(leaderboardDto);
-        Leaderboard savedLeaderboard = leaderboardService.save(leaderboardFactory.toEntity(leaderboardDto));
-        return new ResponseEntity<>(leaderboardFactory.toDto(savedLeaderboard), HttpStatus.OK);
+
+        Leaderboard leaderboard = leaderboardService.save(leaderboardFactory.toEntity(leaderboardDto));
+        return new ResponseEntity<>(leaderboardFactory.toDto(leaderboard), HttpStatus.OK);
     }
 }

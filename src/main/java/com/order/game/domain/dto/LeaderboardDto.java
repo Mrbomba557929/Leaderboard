@@ -10,8 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LeaderboardDto {
+
     private String name;
     private double time;
     private String email;
     private String discord;
+
+    @Override
+    public String toString() {
+        return String.format("(%s  %g  %s  %s)", name, time, email, discord);
+    }
 }

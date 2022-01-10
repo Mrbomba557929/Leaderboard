@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class LeaderboardController {
     }
 
     @PostMapping(SAVE)
-    public ResponseEntity<?> save(@RequestBody LeaderboardDto leaderboardDto) {
+    public ResponseEntity<?> save(@Validated @RequestBody LeaderboardDto leaderboardDto) {
 
         log.info(leaderboardDto);
 
